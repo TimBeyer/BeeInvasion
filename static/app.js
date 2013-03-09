@@ -21,15 +21,18 @@ window.beeInvasion = (function (beeInvasion) {
             ctx.fillRect(0,0,canvasSize[0], canvasSize[1]);
         };
 
-        this.drawEntities = function () {
+        this.doEntities = function () {
             _.each(entities, function (entity) {
+                if (entity.act) {
+                    entity.act();
+                }
                 entity.draw(ctx);
             });
         };
 
         this.run = function () {
             this.clearScreen();
-            this.drawEntities();
+            this.doEntities();
             window.requestAnimationFrame(_.bind(this.run, this));
         };
     };

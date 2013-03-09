@@ -33,6 +33,11 @@ window.beeInvasion = (function (beeInvasion) {
 
             var scale = 1;
 
+            this.act = function () {
+                pos[0] += 1;
+                pos[1] += 1;
+            };
+
             this.draw = function (ctx) {
                 var drawWidth = Math.floor(width*scale);
                 var drawHeight = Math.floor(height*scale);
