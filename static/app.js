@@ -54,6 +54,10 @@ window.beeInvasion = (function (beeInvasion) {
         game.addEntity(new beeInvasion.entities.Bee({
             pos: [50,50]
         }));
+
+        game.addEntity(new beeInvasion.entities.Player({
+            pos: [100,100]
+        }));
         game.run();
 
     });
