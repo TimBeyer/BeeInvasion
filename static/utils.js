@@ -8,7 +8,7 @@ window.beeInvasion = (function (beeInvasion) {
             image.src = imageSrc;
         },
 
-        getAngle: function (v1, v2) {
+        getAngle: function (v2) {
             //var angleRad = Math.acos( (v1[0] * v2[0] + v1[1] * v2[1]) / ( Math.sqrt(v1[0]*v1[0] + v1[1]*v1[1]) * Math.sqrt(v2[0]*v2[0] + v2[1]*v2[1]) ) );
             //angleRad += 2 * Math.PI;
             var angleRad = - Math.atan2(v2[0], v2[1]);
@@ -31,6 +31,26 @@ window.beeInvasion = (function (beeInvasion) {
                 memo[1] -= vector[1];
                 return memo;
             }, _.clone(_.first(arguments)));
+        },
+
+        scaleVector: function (vector, scale) {
+            return _.map(vector, function (component) {
+                return component * scale;
+            });
+        },
+
+        vectorLength: function (vector) {
+            var sumOfSquares = _.reduce(vector, function (memo, component) {
+                return memo + Math.pow(component, 2);
+            }, 0);
+            return Math.sqrt(sumOfSquares);
+        },
+
+        normalizeVector: function (vector) {
+            var length = beeInvasion.utils.vectorLength(vector);
+            return _.map(vector, function (component) {
+                return component / length;
+            });
         }
     };
     
